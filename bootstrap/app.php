@@ -23,10 +23,16 @@ return Application::configure(basePath: dirname(__DIR__))
 
             Route::middleware("web")
             ->group(base_path("routes/administradores.php"));
+
+            Route::middleware("web")
+            ->group(base_path("routes/clase6.php"));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->validateCsrfTokens([
+           "/producto/save" 
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
