@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -44,4 +45,10 @@ Route::match(["get","put","post"],"/varios-verbos",function(){
     return request();
 })->name("variosverbos");
 
+
+
+/**
+ * Rutas para categorias
+ */
+Route::get("/categorias/todo",[CategoriaController::class,'mostrarCategorias']);
 
