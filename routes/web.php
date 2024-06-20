@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -51,4 +52,13 @@ Route::match(["get","put","post"],"/varios-verbos",function(){
  * Rutas para categorias
  */
 Route::get("/categorias/todo",[CategoriaController::class,'mostrarCategorias']);
+
+/**
+ * Llamando procedimiento almacenados
+ */
+Route::get("/procedimiento1",function(){
+  $usuarios = DB::select('call todousers(?)',[1]);
+
+  return $usuarios;
+});
 
