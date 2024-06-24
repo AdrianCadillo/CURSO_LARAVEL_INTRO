@@ -10,9 +10,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    protected $connection = "tienda_ropas";
     public function up(): void
     {
-        //
+        
         DB::unprepared("DROP PROCEDURE IF EXISTS todousers");
 
         DB::unprepared("CREATE PROCEDURE todousers(idusuario int)

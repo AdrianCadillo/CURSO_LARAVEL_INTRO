@@ -62,3 +62,7 @@ Route::get("/procedimiento1",function(){
   return $usuarios;
 });
 
+/**
+ * Consultar a los
+ */
+

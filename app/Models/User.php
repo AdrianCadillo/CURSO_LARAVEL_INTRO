@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = "tienda_ropas";
+
     /**
      * The attributes that are mass assignable.
      *
