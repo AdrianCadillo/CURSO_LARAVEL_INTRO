@@ -63,6 +63,9 @@ Route::get("/procedimiento1",function(){
 });
 
 /**
- * Consultar a los
+ * Componentes
  */
+Route::get("/trabajando-componentes",function(){
+  return view("vista");
+});
 

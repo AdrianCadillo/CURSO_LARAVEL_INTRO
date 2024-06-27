@@ -19,6 +19,12 @@
             </div>
 
             <div class="card-body">
+
+                @if ($respuesta = Session::get("success"))
+                  <div class="alert alert-success">
+                    <b>{{$respuesta}}</b>  
+                  </div>  
+                @endif
                 <a href="{{route("facultad.create")}}" class="btn btn-primary mb-3">Agregar uno nuevo <i class="fas fa-plus"></i></a>
                 @if ($response_delete = Session::get("success_delete_facultad"))
                     <div class="alert alert-success">

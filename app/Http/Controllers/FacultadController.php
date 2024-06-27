@@ -31,12 +31,26 @@ class FacultadController extends Controller
      */
     public function store(Request $formularioFacultad)
     {
+        /**
+         * Validar de que el campo nombre facultad sea obligatorio
+         */
+        $formularioFacultad->validate([
+            "nombre_facultad" => "required|unique:facultades|max:10" /// obligatorio
+        ],
+        [
+            "nombre_facultad.required" => "El input facultad es obligatorio.",
+            "nombre_facultad.unique" => "NO se permite duplicidad de datos!",
+            "nombre_facultad.max" => "La cantidad de caracteres supera al máximo!"
+        ]);
+
         $facultad = new Facultade();
         $facultad->nombre_facultad = $formularioFacultad->nombre_facultad;
 
         $facultad->save();
 
-        return back()->with("success_facultad","Facultad registrado correctamente!");
+        return redirect()
+        ->route("facultad.index")
+        ->with("success","Facultad registrado correctamente!");
     }
 
     /**
@@ -62,5 +76,21 @@ class FacultadController extends Controller
     public function editar(Facultade $facultad)
     {
       return view("facultad.create",compact("facultad"));
+    }
+
+    /**
+     * Método para modificar una facultad
+     */
+    public function modificar(Facultade $facultad)
+    {
+        $facultad->nombre_facultad = request()->nombre_facultad;
+
+        /// guardar los cambios
+
+        $facultad->save();
+
+        return redirect()
+        ->route("facultad.index")
+        ->with("success","Facultad modificado correctamente!");
     }
 }
