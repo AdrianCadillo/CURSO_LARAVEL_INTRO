@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FacultadRequest;
 use App\Models\Facultade;
 use Illuminate\Http\Request;
 
@@ -29,20 +30,9 @@ class FacultadController extends Controller
     /**
      * Método para registrar nueva facultad
      */
-    public function store(Request $formularioFacultad)
+    public function store(FacultadRequest $formularioFacultad)
     {
-        /**
-         * Validar de que el campo nombre facultad sea obligatorio
-         */
-        $formularioFacultad->validate([
-            "nombre_facultad" => "required|unique:facultades|max:10" /// obligatorio
-        ],
-        [
-            "nombre_facultad.required" => "El input facultad es obligatorio.",
-            "nombre_facultad.unique" => "NO se permite duplicidad de datos!",
-            "nombre_facultad.max" => "La cantidad de caracteres supera al máximo!"
-        ]);
-
+    
         $facultad = new Facultade();
         $facultad->nombre_facultad = $formularioFacultad->nombre_facultad;
 

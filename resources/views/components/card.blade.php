@@ -30,6 +30,11 @@
  </div>
 
  <div class="card-body">
-    texto....
+    {{$slot}}
+ </div>
+
+
+ <div class="card-footer">
+    {{$footer_card}}
  </div>
 </div>

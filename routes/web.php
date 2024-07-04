@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\JqueryController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -68,4 +69,7 @@ Route::get("/procedimiento1",function(){
 Route::get("/trabajando-componentes",function(){
   return view("vista");
 });
+
+Route::get("/trabajando-jquery",[JqueryController::class,'index']);
+Route::post("/validate-jquery",[JqueryController::class,'store']);
 

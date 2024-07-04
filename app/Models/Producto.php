@@ -9,8 +9,11 @@ class Producto extends Model
 {
     use HasFactory;
 
+    /// asignacion masiva
+    protected $fillable = ["nombre_producto","descripcion","precio","stock","categoria_id"];
     /**
      * uno | muchos productos pertenecen a un tipo
+     * 1:1 - 1:n
      */
     public function tipo()
     {

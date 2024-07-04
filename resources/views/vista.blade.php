@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Componentes</title>
-    @vite(["resources/css/app.css"])
+    @vite(["resources/css/app.css","resources/js/app.js"])
 </head>
 <body class="container my-2">
     {{-- <x-button tipo="verde" class="border-danger">Guardar</x-button>
@@ -33,5 +33,11 @@
     <x-admin.alerta tipo="error"></x-admin.alerta>
 
     <x-admin.alerta></x-admin.alerta>
+
+    <script type="module">
+        $(document).ready(function(){
+            alert("Hola,mundo!")
+        });
+    </script>
 </body>
 </html>
