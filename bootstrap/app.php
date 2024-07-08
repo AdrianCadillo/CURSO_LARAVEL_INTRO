@@ -29,12 +29,22 @@ return Application::configure(basePath: dirname(__DIR__))
 
             Route::middleware("web")
             ->group(base_path("routes/crud.php"));
+            Route::middleware("web")
+            ->group(base_path("routes/auth.php"));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->validateCsrfTokens([
            "/producto/save" 
+        ]);
+
+        // $middleware->web([
+        //     App\Http\Middleware\MiddlewarePrueba::class
+        // ]);
+        $middleware->alias([
+            "suscribed" => App\Http\Middleware\Suscrito::class,
+            
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

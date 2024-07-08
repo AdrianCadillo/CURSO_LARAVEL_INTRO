@@ -1,8 +1,8 @@
- <x-plantilla>
+<x-plantilla>
     <div class="container my-4">
         <div class="card border-primary">
             <div class="card-header bg-primary">
-                <h5 class="text-white">Todas las facultades</h5>
+                <h5 class="text-white">Facultades en papelera</h5>
             </div>
 
             <div class="card-body">
@@ -12,8 +12,6 @@
                     <b>{{$respuesta}}</b>  
                   </div>  
                 @endif
-                <a href="{{route("facultad.create")}}" class="btn btn-primary mb-3">Agregar uno nuevo <i class="fas fa-plus"></i></a>
-                <a href="{{route("facultad.papelera")}}" class="btn btn-warning mb-3">Facultades en papelera <i class="fas fa-plus"></i></a>
                 @if ($response_delete = Session::get("success_delete_facultad"))
                     <div class="alert alert-success">
                         {{$response_delete}}
@@ -24,7 +22,6 @@
                         <tr>
                             <th>#</th>
                             <th>Facultad</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -34,31 +31,25 @@
                           <tr>
                             <td>{{$loop->iteration}}</td> 
                             <td>{{$facultad->nombre_facultad}}</td>
-                            <td>
-                                @if ($facultad->estado === 'habilitado')
-                                    <span class="badge bg-success">
-                                      facultad habilitado
-                                    </span>
-                                    @else 
-                                    <span class="badge bg-danger">
-                                        facultad inhabilitado
-                                    </span>
-                                @endif
-                            </td>
+                             
                             <td>
                                 <div class="row">
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-12">
-                                        <a href="{{route("facultad.editar",$facultad)}}" class="btn btn-outline-warning btn-sm">
-                                           editar <i class="fas fa-pencil"></i>  
-                                        </a> 
+                                        <form action="{{route("facultad.activar",$facultad->id)}}" method="post">
+                                            @csrf
+                                            @method("PUT")
+                                            <button class="btn btn-outline-primary btn-sm">
+                                               Activar
+                                            </button>
+                                          </form>    
                                     </div>
 
                                     <div class="col-xl-2 col-lg-2 col-md-2 col-12">
-                                        <form action="{{route("facultad.delete",$facultad->id)}}" method="post">
+                                        <form action="{{route("facultad.borrado",$facultad->id)}}" method="post">
                                             @csrf
                                             @method("DELETE")
                                             <button class="btn btn-outline-danger btn-sm">
-                                               eliminar 
+                                               Borrar
                                             </button>
                                           </form>    
                                     </div>

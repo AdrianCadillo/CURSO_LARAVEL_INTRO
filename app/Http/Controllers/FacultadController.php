@@ -83,4 +83,38 @@ class FacultadController extends Controller
         ->route("facultad.index")
         ->with("success","Facultad modificado correctamente!");
     }
+
+    /**
+     * Método para mostrar las facultades que se encuentran en papelera
+     */
+    public function Papelera()
+    {
+        $facultades = Facultade::onlyTrashed()->get();
+
+        return view("facultad.papelera",compact("facultades"));
+    }
+    /**
+     * Método para activar el registro facultad
+     */
+    public function activar($id)
+    {
+        $facultad = Facultade::onlyTrashed()->find($id);
+
+        $facultad->restore();
+
+        return redirect()->route("facultad.index")->with("success","Facultad activado correctamente!");
+    }
+
+    /**
+     * Forzar el eliminado lógico
+     */
+    public function Borrado($id)
+    {
+        $facultad = Facultade::onlyTrashed()->find($id); 
+
+        $facultad->forceDelete();
+
+        return redirect()->route("facultad.papelera")->with("success","Facultad eliminado correctamente!");
+    }
 }
+

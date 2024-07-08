@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Facultade extends Model /// facultades
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    const DELETED_AT = 'eliminado_facultad';
+
 }

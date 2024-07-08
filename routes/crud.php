@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Route;
     Route::post("/save","store")->name("facultad.save");
     Route::delete("/delete/{id}","eliminarFacultad")->name("facultad.delete");
     Route::put("/{facultad}/editar","modificar")->name("facultad.modificar");
+    Route::get("/facultades/papelera","Papelera")->name("facultad.papelera");
+    Route::put("/facultad/{id}/active","activar")->name("facultad.activar");
+    Route::delete("{id}/delete","Borrado")->name("facultad.borrado");
   });
 
   /**

@@ -6,8 +6,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          @auth
           <x-item href="{{route('facultad.index')}}">Facultades</x-item>  
-          <x-item href="{{route('escuela.index')}}">Escuelas</x-item>  
+          <x-item href="{{route('escuela.index')}}">Escuelas</x-item> 
+          <x-item href="{{route('escuela.index')}}">logout</x-item> 
+          @endauth
+          
+          @guest
+          <x-item href="{{route('login')}}">login</x-item>  
+          <x-item href="{{route('escuela.index')}}">Registrate</x-item> 
+          @endguest
         </ul>
       </div>
     </div>
