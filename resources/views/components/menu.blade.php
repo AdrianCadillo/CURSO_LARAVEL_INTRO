@@ -6,16 +6,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          @auth
+          @if (Auth::check())
           <x-item href="{{route('facultad.index')}}">Facultades</x-item>  
           <x-item href="{{route('escuela.index')}}">Escuelas</x-item> 
-          <x-item href="{{route('escuela.index')}}">logout</x-item> 
-          @endauth
-          
-          @guest
+          <x-item href="javascript:;" onclick="document.getElementById('logout').submit()">logout</x-item> 
+          <form action="{{route("login.logout")}}" method="post" id="logout">
+            @csrf
+          </form>
+          @else 
           <x-item href="{{route('login')}}">login</x-item>  
-          <x-item href="{{route('escuela.index')}}">Registrate</x-item> 
-          @endguest
+          <x-item href="{{route('user.registrate')}}">Registrate</x-item> 
+          @endif
+ 
         </ul>
       </div>
     </div>

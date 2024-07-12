@@ -46,6 +46,11 @@ return Application::configure(basePath: dirname(__DIR__))
             "suscribed" => App\Http\Middleware\Suscrito::class,
             
         ]);
+
+        //$middleware->redirectUsersTo("/home");/// dashboard
+
+        //$middleware->redirectGuestsTo("login-principal");
+        // login
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

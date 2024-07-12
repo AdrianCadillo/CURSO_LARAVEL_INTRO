@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FacultadRequest;
 use App\Models\Facultade;
+ 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class FacultadController extends Controller
+class FacultadController extends Controller implements HasMiddleware
 {
+   
+   public static function middleware(): array
+   {
+       return [
+           //'auth',
+           //new Middleware('log', only: ['index']),
+           new Middleware('suscribed:si', except: ['store']),
+       ];
+   }
     // Método para visualizar todas las facultades
     public function index()
     {

@@ -88,3 +88,7 @@ Route::get("/pagina-no-disponible",function(){
  */
 Route::get("/contacto",[ContactoController::class,'index'])->name("contacto.index");
 Route::post("/contacto/send",[ContactoController::class,'enviarCorreo'])->name("contacto.enviar.correo");
+
+/**
+ * Procedo de login personalizado
+ */
